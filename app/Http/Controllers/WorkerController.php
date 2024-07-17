@@ -21,15 +21,10 @@ class WorkerController extends Controller
         return view('workers.create', compact('clinics'));
     }
 
-    public function store(Request $request)
+    public function store(WorkerRequest $request)
     {
-        $request->validate([
-            'name' => 'required|unique:workers',
-            'mail' => 'required|email|unique:workers',
-            'phone' => 'required',
-        ]);
-
-        $clinica = Worker::create($request->all());
+        Worker::create($request->validated());
+        return redirect()->route('workers.index')->with('success', 'WOrker created succesfully.');
     }
 
     public function show(Worker $worker)
@@ -53,6 +48,6 @@ class WorkerController extends Controller
     public function destroy(Worker $worker)
     {
         $worker->delete();
-        return redirect()->route('worker.index')->with('success', 'Empleado eliminado correctamente.');
+        return redirect()->route('workers.index')->with('success', 'Empleado eliminado correctamente.');
     }
 }
