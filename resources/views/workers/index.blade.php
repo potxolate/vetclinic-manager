@@ -9,6 +9,7 @@
             <tr>
                 <th>Name</th>
                 <th>Mail</th>
+                <th>Clinic</th>
                 <th>Phone</th>
                 <th>Acciones</th>
             </tr>
@@ -18,6 +19,7 @@
             <tr>
                 <td>{{ $worker->name }}</td>
                 <td>{{ $worker->mail }}</td>
+                <td>{{ $worker->clinic->name }}</td>
                 <td>{{ $worker->phone }}</td>
                 <td>
                     <a href="{{ route('workers.edit', $worker) }}" class="btn btn-warning">Editar</a>
