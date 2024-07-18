@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class ClinicRequest extends FormRequest
 {
@@ -23,7 +25,11 @@ class ClinicRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'mail' => 'required|email|unique:clinics,mail',
+            'mail' => [
+                'required',
+                'email',
+                Rule::unique('clinics')->ignore($this->clinic)
+            ],
             'phone' => 'required|string|max:15',
         ];
     }

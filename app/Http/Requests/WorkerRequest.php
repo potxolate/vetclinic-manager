@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class WorkerRequest extends FormRequest
 {
@@ -26,7 +27,11 @@ class WorkerRequest extends FormRequest
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',            
             'clinic_id' => 'required|exists:clinics,id',
-            'mail' => 'required|email|unique:workers,mail',
+            'mail' => [
+                'required',
+                'email',
+                Rule::unique('workers')->ignore($this->worker)
+            ],
             'phone' => 'required|string|max:15',
         ];
     }

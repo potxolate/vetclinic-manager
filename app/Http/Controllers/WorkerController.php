@@ -43,11 +43,10 @@ class WorkerController extends Controller
         return view('workers.edit', compact('worker', 'clinics'));
     }
 
-    public function update(WorkerRequest $request, Worker $worker)
-    {
+    public function update(WorkerRequest $request,  Worker $worker)
+    {        
         $worker->update($request->validated());
-        $clinics = Clinic::all();
-        return redirect()->route('worker.index')->with('success', 'Empleado actualizado correctamente.');
+        return redirect()->route('workers.index')->with('success', 'Empleado actualizado correctamente.');
     }
 
     public function destroy(Worker $worker)

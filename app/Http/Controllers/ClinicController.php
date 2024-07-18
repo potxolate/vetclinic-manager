@@ -53,7 +53,6 @@ class ClinicController extends Controller
     public function edit(Clinic $clinic)
     {
         return view('clinics.edit', compact('clinic'));
-
     }
 
     /**

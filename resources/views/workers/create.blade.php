@@ -8,14 +8,14 @@
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" required>
-            @error('nombre')
+            @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3">
             <label for="surname" class="form-label">Last Name</label>
             <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname') }}" required>
-            @error('apellido')
+            @error('surname')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
