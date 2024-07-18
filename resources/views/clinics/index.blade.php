@@ -8,7 +8,9 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
             </tr>
         </thead>
     </table>
@@ -25,6 +27,9 @@ $(document).ready(function() {
         columns: [
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
+            { data: 'mail', name: 'mail' },
+            { data: 'phone', name: 'phone' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
                  
         ]
     });
