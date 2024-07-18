@@ -7,7 +7,7 @@
     <table class="table mt-3">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Worker</th>
                 <th>Mail</th>
                 <th>Clinic</th>
                 <th>Phone</th>
@@ -17,7 +17,7 @@
         <tbody>
             @foreach($workers as $worker)
             <tr>
-                <td>{{ $worker->name }}</td>
+                <td>{{ $worker->name }} {{ $worker->surname }}</td>
                 <td>{{ $worker->mail }}</td>
                 <td>{{ $worker->clinic->name }}</td>
                 <td>{{ $worker->phone }}</td>

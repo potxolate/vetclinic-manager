@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label for="surname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname') }}" required>           
+            <input type="text" class="form-control" id="surname" name="surname" value="{{ $worker->surname }}" required>           
         </div>
         <div class="mb-3">
             <label for="mail" class="form-label">Email</label>
@@ -22,6 +22,14 @@
             <label for="phone" class="form-label">phone</label>
             <input type="text" class="form-control" id="phone" name="phone" value="{{ $worker->phone }}" required>
         </div>
+        <div class="mb-3">
+            <label for="clinic_id" class="form-label">Clinic</label>
+            <select class="form-control" id="clinic_id" name="clinic_id" required>                
+                @foreach($clinics as $clinic)
+                    <option value="{{ $clinic->id }}" selected>{{ $clinic->name }}</option>
+                @endforeach
+            </select>
+        </div>        
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

@@ -9,6 +9,11 @@ use App\Http\Requests\WorkerRequest;
 
 class WorkerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $workers = Worker::with('clinic')->paginate(10);
@@ -40,8 +45,8 @@ class WorkerController extends Controller
 
     public function update(WorkerRequest $request, Worker $worker)
     {
-        var_dump($request);
         $worker->update($request->validated());
+        $clinics = Clinic::all();
         return redirect()->route('worker.index')->with('success', 'Empleado actualizado correctamente.');
     }
 
