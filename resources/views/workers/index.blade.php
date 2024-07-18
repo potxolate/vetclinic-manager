@@ -2,8 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>Workers</h1>
-    <a href="{{ route('workers.create') }}" class="btn btn-primary">Create Worker</a>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Workers</h1>
+        <a href="{{ route('workers.create') }}" class="btn btn-primary">Create Worker</a>
+    </div>
     <table class="table mt-3">
         <thead>
             <tr>

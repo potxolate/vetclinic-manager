@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ __('messages.Clinics') }}</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>{{ __('messages.Clinics') }}</h1>
+        <a href="{{ route('clinics.create') }}" class="btn btn-primary">Crear Clínica</a>
+    </div>
     <table id="clinics-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
         <thead>
             <tr>

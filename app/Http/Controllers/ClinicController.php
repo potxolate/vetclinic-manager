@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
 use App\Http\Requests\ClinicRequest;
+use App\Notifications\NewClinicNotification;
+use Illuminate\Support\Facades\Notification;
 use Yajra\DataTables\Facades\DataTables;
 
 class ClinicController extends Controller
@@ -13,14 +15,12 @@ class ClinicController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        
         $clinics = Clinic::paginate(10);
         return view('clinics.index', compact('clinics'));
     }
@@ -38,7 +38,11 @@ class ClinicController extends Controller
      */
     public function store(ClinicRequest $request)
     {
-        Clinic::create($request->validated());
+        $clinic = Clinic::create($request->validated());
+        // send notification
+            Notification::route('mail', 'rubengs@gmail.com')
+                ->notify(new NewClinicNotification($clinic));
+
         return redirect()->route('clinics.index')->with('success', 'Clinic created succesfully.');
     }
 
@@ -81,11 +85,11 @@ class ClinicController extends Controller
         $data = Clinic::latest()->get();
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function($row){
-                $btn = '<a href="'.route('clinics.edit', $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
-                $btn .= ' <form action="'.route('clinics.destroy', $row->id).'" method="POST" style="display:inline;">
-                              '.csrf_field().'
-                              '.method_field("DELETE").'
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="' . route('clinics.edit', $row->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
+                $btn .= ' <form action="' . route('clinics.destroy', $row->id) . '" method="POST" style="display:inline;">
+                              ' . csrf_field() . '
+                              ' . method_field("DELETE") . '
                               <button type="submit" class="delete btn btn-danger btn-sm">Delete</button>
                           </form>';
                 return $btn;
@@ -93,5 +97,4 @@ class ClinicController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
-
 }
