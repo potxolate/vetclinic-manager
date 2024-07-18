@@ -31,6 +31,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $clinics->links() }}
+    <div class="d-flex my-2 justify-content-center">
+        {{ $clinics->links() }}
+    </div>
+    
 </div>
 @endsection
