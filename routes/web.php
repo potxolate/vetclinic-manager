@@ -28,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('clinics', ClinicController::class);
 Route::resource('workers', WorkerController::class);
+
+Route::get('/data', [ClinicController::class, 'data'])->name('clinics.data');
