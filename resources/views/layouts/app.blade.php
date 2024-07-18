@@ -50,6 +50,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                    @foreach(config('app.available_locales') as $locale)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('lang', ['locale' => $locale]) }}">{{ strtoupper($locale) }}</a>
+                        </li>
+                    @endforeach
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

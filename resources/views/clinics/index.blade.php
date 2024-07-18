@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Clinics</h1>
+    <h1>{{ __('messages.Clinics') }}</h1>
     <table id="clinics-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
         <thead>
             <tr>

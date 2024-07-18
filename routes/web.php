@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\WorkerController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -30,3 +32,12 @@ Route::resource('clinics', ClinicController::class);
 Route::resource('workers', WorkerController::class);
 
 Route::get('/data', [ClinicController::class, 'data'])->name('clinics.data');
+
+Route::get('lang/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'es'])) {
+        abort(400);
+    }
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+})->name('lang');
