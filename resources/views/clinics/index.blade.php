@@ -4,7 +4,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
         <h1>{{ __('messages.Clinics') }}</h1>
-        <a href="{{ route('clinics.create') }}" class="btn btn-primary">Crear Clínica</a>
+        <a href="{{ route('clinics.create') }}" class="btn btn-primary">{{ __('messages.create-clinic') }}</a>
     </div>
     <table id="clinics-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
         <thead>

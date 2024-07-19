@@ -26,7 +26,12 @@ class WorkerRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',            
-            'clinic_id' => 'required|exists:clinics,id',
+            'clinic_id' => 'required|exists:clinics,id',            
+            'dni' => [
+                'required',
+                'string',
+                Rule::unique('workers')->ignore($this->worker)
+            ],
             'mail' => [
                 'required',
                 'email',

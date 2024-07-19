@@ -85,6 +85,10 @@ class ClinicController extends Controller
         $data = Clinic::latest()->get();
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('name', function ($clinic) {
+                $btn = '<a href="'.route('clinics.show', $clinic->id).'">'.$clinic->name.'</a>';
+                return $btn;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '<a href="' . route('clinics.edit', $row->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
                 $btn .= ' <form action="' . route('clinics.destroy', $row->id) . '" method="POST" style="display:inline;">
@@ -94,7 +98,7 @@ class ClinicController extends Controller
                           </form>';
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['name', 'action'])
             ->make(true);
     }
 }

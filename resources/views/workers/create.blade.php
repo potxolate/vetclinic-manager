@@ -20,6 +20,13 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="dni" name="dni" value="{{ old('dni') }}" required>
+            @error('dni')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="mail" class="form-label">Email</label>
             <input type="email" class="form-control" id="mail" name="mail" required>
             @error('mail')

@@ -29,7 +29,7 @@ class WorkerController extends Controller
     public function store(WorkerRequest $request)
     {
         Worker::create($request->validated());
-        return redirect()->route('workers.index')->with('success', 'WOrker created succesfully.');
+        return redirect()->route('workers.index')->with('success', 'Worker created succesfully.');
     }
 
     public function show(Worker $worker)

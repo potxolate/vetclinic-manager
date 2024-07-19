@@ -44,10 +44,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link navbar-brand" href="{{ url('/clinics') }}">{{ __('Clinics') }}</a>
+                            <a class="nav-link navbar-brand" href="{{ url('/clinics') }}">{{ __('messages.Clinics') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-brand" href="{{ url('/workers') }}">{{ __('Workers') }}</a>
+                            <a class="nav-link navbar-brand" href="{{ url('/workers') }}">{{ __('messages.Workers') }}</a>
                         </li>
                     </ul>
 

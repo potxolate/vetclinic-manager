@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
+            <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $worker->name }}" required>
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -19,6 +19,13 @@
             @error('surname')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror          
+        </div>
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="dni" name="dni" value="{{ old('dni', $worker->dni) }}" required>
+            @error('dni')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="mail" class="form-label">Email</label>
