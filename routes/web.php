@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [ClinicController::class, 'index'])->name('home');
+Route::get('/home', [ClinicController::class, 'index'])->name('home');
 
 Route::resource('clinics', ClinicController::class);
 Route::resource('workers', WorkerController::class);
