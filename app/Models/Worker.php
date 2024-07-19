@@ -14,7 +14,7 @@ class Worker extends Model
         'surname',
         'dni',
         'clinic_id',
-        'email',
+        'mail',
         'phone',
     ];
 
